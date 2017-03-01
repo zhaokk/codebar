@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "SectionManagement";
+}
+
+<h2>SectionManagement</h2>
+
+<ul class="nav nav-tabs">
+    <li role="presentation" id="1" class="tabb active"><a href="#">Stuedent Management</a></li>
+    <li role="presentation" id="2" class="tabb"><a href="#">View Progress  </a></li>
+    <li role="presentation" id="3" class="tabb"><a href="#">View stats</a></li>
+</ul>
+<div id="studentManagement">
+    @Html.Action("IndexPartial", "Students")
+    </div>
+<div id="viewProgress" hidden>
+    @Html.Action("getProgress","Sections")
+    </div>
+<div id="viewStats">
+    </div>
+<script>
+    var activeTab = 1;
+    $(".tab").click(
+       function () {
+           var clickId = $(this).attr('id');
+       if(clickId==1){
+       $("#studentManagement").show();
+       $("#viewProgress").hide();
+       $("#1").attr('class')=activeyukukil
+       }else{
+       $("#viewProgress").show();
+        $("#studentManagement").hide();
+       }
+
+
+       }
+        )
+
+</script>

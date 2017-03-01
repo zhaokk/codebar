@@ -1,0 +1,45 @@
+﻿
+@model roletest.Models.Student
+@{
+    ViewBag.Title = "Gallery";
+    var i = 0;
+}
+
+<h2>Gallery</h2>
+<hr>
+
+<div class="row">
+  
+        @foreach (var pic in Model.LifeCycles)
+        {
+            i++;
+            if (i % 2 != 0)
+            {
+                <div class="col-md-6 portfolio-item">
+                    <a href="@pic.directory">
+                        <img class="img-responsive img-thumbnail" src="@pic.directory" width="500px" alt="">
+                    </a>
+                    <h3>
+                        <a href="#">@pic.name</a>
+                    </h3>
+                </div>
+            }else{
+                <div class="col-md-6 portfolio-item">
+                    <a href="@pic.directory">
+                        <img class="img-responsive img-thumbnail" src="@pic.directory" width="500px" alt="">
+                    </a>
+                    <h3>
+                        <a href="#">@pic.name</a>
+                    </h3>
+                </div>
+           @: </div>
+            
+          
+           @: <div class="row">
+         
+                    }
+
+                    }
+
+
+      

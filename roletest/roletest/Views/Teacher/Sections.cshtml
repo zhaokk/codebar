@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<br>
+<div class="jumbotron">
+    <table ng-show="sections.length > 0" style="width:100%; table-layout:auto;" class="">
+        <colgroup>
+            <col width="200">
+            <col width="130">
+            <col width="98">
+            <col width="130">
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'name'">Section</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'login_type'">Login Type</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'grade'">Grade</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'course.name'">Course</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'students.length'">Students</a>
+                </th>
+                <th class="manage-th">Section Code</th>
+                <th class="manage-th"></th>
+            </tr>
+            <!-- ngRepeat: section in sections | orderBy:order -->
+            <tr ng-repeat="section in sections | orderBy:order" style="vertical-align:top" class="ng-scope">
+                <td>
+                    <span ng-hide="section.editing" style="font-size:18px; padding-top:12px" class="">
+                        <a ng-href="#/sections/482236" class="ng-binding" href="../students/index">UOW Smart Start</a>
+                    </span>
+               
+                    
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">word</span>
+                 
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">5</span>
+                    
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">20-hour</span>
+                  
+                </td>
+                <td class="ng-binding">1</td>
+                <td class="ng-binding">
+                    YDLNCU
+                </td>
+          
+            </tr><!-- end ngRepeat: section in sections | orderBy:order -->
+        </tbody>
+    </table>
+</div>
+
+<div class="jumbotron">
+    <table ng-show="sections.length > 0" style="width:100%; table-layout:auto;" class="">
+        <colgroup>
+            <col width="200">
+            <col width="130">
+            <col width="98">
+            <col width="130">
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'name'">Section</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'login_type'">Login Type</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'grade'">Grade</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'course.name'">Course</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'students.length'">Students</a>
+                </th>
+                <th class="manage-th">Section Code</th>
+                <th class="manage-th"></th>
+            </tr>
+            <!-- ngRepeat: section in sections | orderBy:order -->
+            <tr ng-repeat="section in sections | orderBy:order" style="vertical-align:top" class="ng-scope">
+                <td>
+                    <span ng-hide="section.editing" style="font-size:18px; padding-top:12px" class="">
+                        <a ng-href="#/sections/482236" class="ng-binding" href="../students/index">UOW Smart Start</a>
+                    </span>
+
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">word</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">5</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">20-hour</span>
+
+                </td>
+                <td class="ng-binding">1</td>
+                <td class="ng-binding">
+                    YDLNCU
+                </td>
+
+            </tr><!-- end ngRepeat: section in sections | orderBy:order -->
+        </tbody>
+    </table>
+</div>
+
+<div class="jumbotron">
+    <table ng-show="sections.length > 0" style="width:100%; table-layout:auto;" class="">
+        <colgroup>
+            <col width="200">
+            <col width="130">
+            <col width="98">
+            <col width="130">
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'name'">Section</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'login_type'">Login Type</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'grade'">Grade</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'course.name'">Course</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'students.length'">Students</a>
+                </th>
+                <th class="manage-th">Section Code</th>
+                <th class="manage-th"></th>
+            </tr>
+            <!-- ngRepeat: section in sections | orderBy:order -->
+            <tr ng-repeat="section in sections | orderBy:order" style="vertical-align:top" class="ng-scope">
+                <td>
+                    <span ng-hide="section.editing" style="font-size:18px; padding-top:12px" class="">
+                        <a ng-href="#/sections/482236" class="ng-binding" href="#/sections/482236">123</a>
+                    </span>
+
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">word</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">5</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">20-hour</span>
+
+                </td>
+                <td class="ng-binding">1</td>
+                <td class="ng-binding">
+                    YDLNCU
+                </td>
+
+            </tr><!-- end ngRepeat: section in sections | orderBy:order -->
+        </tbody>
+    </table>
+</div>
+
+<div class="jumbotron">
+    <table ng-show="sections.length > 0" style="width:100%; table-layout:auto;" class="">
+        <colgroup>
+            <col width="200">
+            <col width="130">
+            <col width="98">
+            <col width="130">
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+            <tr>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'name'">Section</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'login_type'">Login Type</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'grade'">Grade</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'course.name'">Course</a>
+                </th>
+                <th class="manage-th">
+                    <a href="" ng-click="order = 'students.length'">Students</a>
+                </th>
+                <th class="manage-th">Section Code</th>
+                <th class="manage-th"></th>
+            </tr>
+            <!-- ngRepeat: section in sections | orderBy:order -->
+            <tr ng-repeat="section in sections | orderBy:order" style="vertical-align:top" class="ng-scope">
+                <td>
+                    <span ng-hide="section.editing" style="font-size:18px; padding-top:12px" class="">
+                        <a ng-href="#/sections/482236" class="ng-binding" href="#/sections/482236">123</a>
+                    </span>
+
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">word</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">5</span>
+
+                </td>
+                <td>
+                    <span ng-hide="section.editing" class="ng-binding">20-hour</span>
+
+                </td>
+                <td class="ng-binding">1</td>
+                <td class="ng-binding">
+                    YDLNCU
+                </td>
+
+            </tr><!-- end ngRepeat: section in sections | orderBy:order -->
+        </tbody>
+    </table>
+</div>
+<h2>Index</h2>
+

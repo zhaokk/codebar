@@ -1,0 +1,22 @@
+﻿#codeInterface .row{
+    position:relative;
+}
+#dialog {
+position:absolute;
+}
+.levelTable {
+margin-top:10px;
+margin-bottom:10px;
+}
+.levelTable h1{
+margin:10px;
+}
+.runTable {
+width:600px;
+}
+#dialogHelpStack table td {
+        vertical-align: -webkit-baseline-middle ;
+}
+#resetButton, #runButton {
+margin:10px;
+}

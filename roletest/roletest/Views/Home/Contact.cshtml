@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<hgroup>
+    
+</hgroup>
+<div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-lg-8" style="background-color: rgb(139, 195, 74);z-index:5;
+    padding: 50px;
+    border-radius: 12px;
+    font-size: 1.4em;">
+            <h1 >Tell we what do you think</h1>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+              
+                    <input id="name" placeholder="Your name" class="input" name="theName" type="text" value="" size="30"  required/><br />
+                </div>
+                <div class="row">
+                
+                    <input id="email" placeholder="Your email" class="input" name="theEmail" type="email" value="" size="30"  required/><br />
+                </div>
+                <div class="row">
+                  
+                    <textarea id="message" placeholder="Your message" class="input" name="theMessage" rows="7" cols="30" required></textarea><br />
+                </div>
+                <input id="submit_button" class="btn" type="submit" value="Send email" />
+            }
+        </div>
+        <div class="col-lg-4" style="background-color: rgb(189, 206, 21);
+    padding: 50px;
+    border-radius: 12px;
+    margin-left: -21px;
+    color:white;
+    ">
+            Download source code
+            <address>
+                One Microsoft Way<br />
+                Redmond, WA 98052-6399<br />
+                <abbr title="Phone">P:</abbr>
+                425.555.0100
+            </address>
+
+            <address>
+                <i class="icon-envelope"></i><strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+                <i class="icon-envelope"></i><strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+            </address>
+        </div>
+    </div>
+</div>

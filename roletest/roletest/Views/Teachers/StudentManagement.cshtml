@@ -1,0 +1,277 @@
+﻿@model roletest.Models.Section
+@{
+    ViewBag.Title = "StudentManagement";
+}
+
+<style>
+    /*start of progressbar bar */
+    .progressbar {
+	width: 100%;
+	max-width: 800px;
+	margin: 30px auto 0;
+	display: table;
+	position: relative;
+	text-align: center;
+	left: 4%;
+}
+.progressbar ul {  
+	display: table-row;
+}
+.progressbar ul li {
+	background-color: #d6d6d6; /* Default Bar Color */
+	display: table-cell;
+	position: relative;
+	line-height: 20px;
+	z-index: 0;
+	color: #FFF;
+	text-align: left;	
+}
+.progressbar ul li::before {
+	content:'';
+	width: 40px;
+	height: 40px;
+	color: #FFF;
+	line-height: 30px;
+	text-align: center;
+	left: -15px;
+	background-color: #d6d6d6;/* Default Circle Color */
+	border: solid 5px #d6d6d6;/* Default Circle Color */
+	index: -9;
+	position: absolute;
+	display: block;
+	top: -10px;	
+	margin-right: auto;
+	margin-left: auto;
+	z-index: -1;
+	
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+	        border-radius: 50%;
+}
+/* CURRENT STEP */
+.progressbar ul li.current {
+	display: inline-block;
+	width: 100%;
+	z-index: 0;
+	color: #0e90d2;
+	position: relative;
+}
+.progressbar ul li.current::before {
+	border: solid 5px #0e90d2;/* Current Step Circle Color */
+	background-color: #FFF;
+}
+/* COMPLETED STEPS */
+.progressbar ul li.complete {
+	background-color: #0e90d2; /* Completed Step Bar Color */
+}
+.progressbar ul li.complete::before {
+	background-color: #0e90d2; /* Completed Step Circle Color */
+	border: 5px solid transparent;
+}
+/* REMOVE FIRST STEP COLOR BAR LINE */
+.progressbar ul li:last-of-type {
+	background-color: transparent;
+}
+.progressbar ul li.current:last-of-type,
+.progressbar ul li.complete:last-of-type  {
+	background-color: transparent;
+}
+/*end of progressbar bar*/
+</style>
+
+<div style="margin-top:15px;margin-bottom:18px;padding:25px;">
+    <ul style="margin: 19px 0px 18px; visibility: visible;" class="nav nav-tabs test2">
+        <li class="active"><a data-toggle="tab" href="#home" aria-expanded="false">Students</a></li>
+        <li class=""><a data-toggle="tab" href="#menu1" aria-expanded="false">progressbar</a></li>
+        <li class=""><a data-toggle="tab" href="#menu2" aria-expanded="false">quesions</a></li>
+        <li class=""><a data-toggle="tab" href="#menu3" aria-expanded="true">LifeCycles</a></li>
+    </ul>
+
+    <div class="tab-content" style="
+         boarder 1px;
+         ">
+        <div id="home" class="tab-pane fade active in" style="border:1px;">
+            <h3>Students</h3>
+            <div>
+                <p>
+                    @Html.ActionLink("Create New", "CreateStudent",new { sectionId = Model.Id})
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Email/username
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                           Age
+                        </th>
+                       
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.Students)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                            </td>
+                            <td>
+                                @if (item.Gender == true)
+                                {
+                                   <p>male</p>
+                                }
+                                else {
+                                    <p>female</p>
+
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Age)
+                            </td>
+                        
+                            <td>
+                                @Html.ActionLink("Edit", "Edit","Students", new { id = item.Id },null) |
+                                @Html.ActionLink("Details", "Details", "Students", new { id = item.Id },null) |
+                                @Html.ActionLink("Delete", "Delete", "Students", new { id = item.Id },null)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+</div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>progressbar</h3>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Email/username
+                        </th>
+                        <th>
+                           progressbar overview
+
+                        </th>
+
+
+                     
+                    </tr>
+
+                    @foreach (var item in Model.Students)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                            </td>
+
+                            <td>
+                                <div class="progressbar">
+                                    <ul>
+                                        <li class="current">1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                        <li>5</li>
+                                        <li>6</li>
+                                        <li>7</li>
+                                        <li>8</li>
+                                    </ul>
+                                </div>
+                                <br>
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>quesions</h3>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Email/username
+                        </th>
+                        <th>
+                          New question
+                        </th>
+                        <th>
+                           on going question
+                        </th>
+                        <th>
+                            solved question
+                        </th>
+                        
+                    </tr>
+
+                    @foreach (var item in Model.Students)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                            </td>
+
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                 0
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div id="menu3" class="tab-pane fade ">
+            <h3>LifeCycles</h3>
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Email/username
+                        </th>
+                        <th>
+                            Lifecycle number
+                        </th>
+                       
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.Students)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                            </td>
+                        
+                            <td>
+                                @item.LifeCycles.Count();
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "Students", new { id = item.Id }, null) |
+                                @Html.ActionLink("Details", "Details", "Students", new { id = item.Id }, null) |
+                                @Html.ActionLink("Delete", "Delete", "Students", new { id = item.Id }, null)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+           
+        </div>
+    </div>
+</div>

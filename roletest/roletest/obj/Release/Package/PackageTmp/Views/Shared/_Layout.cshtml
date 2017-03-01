@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+    <script src="~/scripts/alertifyjs/alertify.js"></script>
+    <link rel="stylesheet" href="~/Content/alertifyjs/alertify.css">
+    <link rel="stylesheet" href="~/Content/alertifyjs/default.css">
+    <script>
+    
+        alertify.defaults = {
+            // dialogs defaults
+            modal: true,
+            basic: false,
+            frameless: false,
+            movable: true,
+            moveBounded: false,
+            resizable: true,
+            closable: true,
+            closableByDimmer: true,
+            maximizable: true,
+            startMaximized: false,
+            pinnable: true,
+            pinned: true,
+            padding: true,
+            overflow: true,
+            maintainFocus: true,
+            transition: 'pulse',
+            autoReset: true,
+
+            // notifier defaults
+            notifier: {
+                // auto-dismiss wait time (in seconds)  
+                delay: 5,
+                // default position
+                position: 'top-right'
+            },
+
+            // language resources 
+            glossary: {
+                // dialogs default title
+                title: 'CodeBar',
+                // ok button text
+                ok: 'OK',
+                // cancel button text
+                cancel: 'Cancel'
+            },
+
+            // theme settings
+            theme: {
+                // class name attached to prompt dialog input textbox.
+                input: 'ajs-input',
+                // class name attached to ok button
+                ok: 'ajs-ok',
+                // class name attached to cancel button 
+                cancel: 'ajs-cancel'
+            }
+        };
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <style>
+          .affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+          .nav > li {
+ 
+    border-right: 1px dotted #ededed;
+}
+  .navbar {
+      margin-bottom: 0px;
+      box-shadow: 7px 2px 0px #888888;
+  }
+   .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+    </style>
+</head>
+<body style="padding:0px;background: #ededed;">
+    <div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;">
+       @Html.Partial("_bannerPartial")
+     
+    </div>
+    <div id="nav">
+    <div class="navbar navbar-default" data-spy="affix" data-offset-top="197">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CodeBar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "font-family: 'Audiowide', cursive;" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">             
+                    <li>@Html.ActionLink("Learn", "index", "posts")</li>
+                    <li>@Html.ActionLink("Teach", "ManageSections", "Teachers")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @{if (User.IsInRole("Student"))
+                        {
+                           
+                          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    LifeCycle<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu">
+                    <li>
+   @Html.ActionLink("New LifeCycle","LifeCycle","Students")
+                        </li>
+    <li>
+        @Html.ActionLink("Gallery", "Gallery", "Students")
+    </li>
+</ul>
+                    
+</li>
+                        }
+                        else {
+                            <li>@Html.ActionLink("LifeCycle", "LifeCycle", "Students")</li>
+                        }
+                    }
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+        </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CODEBAR Application</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

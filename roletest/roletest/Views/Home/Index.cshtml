@@ -1,0 +1,217 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+   
+    ViewBag.Title = "Home Page";
+}
+@*<script src="~/Scripts/jquery.js"></script>*@
+<link href="~/Content/modern-business.css" rel="stylesheet">
+<link href="~/Scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<header id="myCarousel" class="carousel slide">
+    @if (ViewBag.noti == 1)
+    {
+
+        <script>
+            alertify.message('Welcome Back ' + "@User.Identity.GetUserName()");
+
+        </script>
+    }
+    else if (ViewBag.noti == 2)
+    {
+        <script>
+            alertify.message('Welcome aboard ' + "@User.Identity.GetUserName()");
+
+        </script>
+
+    }
+    <style>
+        .panel-default {
+            box-shadow: 0 1px 2px #AAA;
+    background: #FFF;
+    border-radius: 3px;
+    -webkit-transition: box-shadow .3s ease-in-out;
+    margin-bottom: 40px;
+   
+    margin-right: 2%;
+        }
+        </style>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="fill extend" style="background-image:url('../Content/image/mazejpg.jpg');"></div>
+            <div class="carousel-caption">
+                <a href="~/scripts/blockly/maze.html"><h1>maze</h1></a>
+            </div>
+        </div>
+        <div class="item ">
+            <div class="fill extend" style="background-image:url('../Content/image/Flat-Puzzle-Background-1024.jpg');"></div>
+            <div class="carousel-caption">
+                <a href="~/scripts/blockly/puzzle.html"><h1>Puzzle</h1></a>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill extend" style="background-image:url('../Content/image/iron-man.jpg');"></div>
+            <div class="carousel-caption">
+                <a href="~/scripts/blockly/movie.html"><h1>movie</h1></a>
+            </div>
+        </div>
+     
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</header>
+<!-- Page Content -->
+<div class="container">
+    <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+    <!-- Marketing Icons Section -->
+    <div class="row">
+        <div class="col-lg-12">
+          <br /><br /><br /><br /> <br /><br />
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="    background-color: #2196F3;">
+                    <h1 style="margin-bottom :0px;    font-size: 90px;">
+                        <i class="fa fa-fw fa-check"></i>
+                    </h1>
+                   
+                </div>
+                <div class="panel-body" >
+                    <h4 style="text-align:center;font-size:30px;">
+                        Educators</h1>
+
+                        <h4>Complete student management</h4>
+
+                        <h4>Free to use</h4>
+
+                        <h4>Support community</h4>
+
+                        <a href="#" class="btn btn-default">Learn More</a>
+</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #CDDC39;">
+                    <h1 style="margin-bottom :0px;    font-size: 90px;">
+                        <i class="fa fa-fw fa-gift"></i>
+                    </h1>
+                      
+                </div>
+                <div class="panel-body"><h4 style="text-align:center;font-size:30px;">
+    Easy start</h1>
+    <h4>Learner</h4>
+
+    <h4>Free to use</h4>
+
+    <h4>Helps &amp; Tips</h4>
+    <a href="#" class="btn btn-default">Learn More</a>
+</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #4CAF50;">
+                    <h1 style="margin-bottom :0px;    font-size: 90px;"><i class="fa fa-fw fa-compass">
+                        </i>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <h4 style="text-align:center;font-size:30px;">
+                        Open source
+                    </h4><h4>Upload project</h4>
+
+                    <h4>Share project</h4>
+
+                    <h4>Rate project</h4>
+                    <a href="#" class="btn btn-default">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- /.row -->
+    <!-- Portfolio Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Portfolio Heading</h2>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/bird.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/angry-birds-for-pc.jpg"style="height:225px;width:350px;">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/puzzle.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/Flat-Puzzle-Background-1024.jpg"  style="height:225px;width:350px;">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/pond-basic.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/Image 2.png" style="height:225px;width:350px;">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/turtle.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/images.jpg" style="height:225px;width:350px;">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/movie.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/iron-man.jpg" width="350" height="225">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="~/scripts/blockly/maze.html">
+                <img class="img-responsive img-portfolio img-hover" src="~/Content/image/mazejpg.jpg" alt="">
+            </a>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Features Section -->
+    @*<div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Modern Business Features</h2>
+        </div>
+        <div class="col-md-6">
+            <p>The Modern Business template by Start Bootstrap includes:</p>
+            <ul>
+                <li>
+                    <strong>Bootstrap v3.2.0</strong>
+                </li>
+                <li>jQuery v1.11.0</li>
+                <li>Font Awesome v4.1.0</li>
+                <li>Working PHP contact form with validation</li>
+                <li>Unstyled page elements for easy customization</li>
+                <li>17 HTML pages</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+        </div>
+    </div>
+    <!-- /.row -->
+    <hr>
+    <!-- Call to Action Section -->
+    <div class="well">
+        <div class="row">
+            <div class="col-md-8">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+            </div>
+        </div>
+    </div>*@
+    <hr>

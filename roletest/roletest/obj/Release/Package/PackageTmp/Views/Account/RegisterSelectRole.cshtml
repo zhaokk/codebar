@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "RegisterSelectRole";
+}
+<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+<script src="~/scripts/flip/jquery.flip.js"></script>
+<style>
+    h2 {
+       font-size:30px;
+    }
+</style>.
+<div class="row">
+    <h2 class="text" style="text-align:center">Are you a teacher or a student</h2>
+
+    <div style="margin-top:100px" class="row">
+        
+        <div class="col-lg-4 col-lg-offset-3 "><a href=@Url.Action("RegisterTeacher","Account")><div id="card" style="height:400px"><div class="front" ><img class="tea " src="~/Content/image/teacher.png" /></div><div class="back"><img class="tea" src="~/Content/image/teacher2.png " /></div></div></a><h2 style="font-family: 'Bangers', cursive;letter-spacing: 3px;color: #2AB2C2;"><br/>&nbsp;&nbsp;&nbsp;&nbsp;Teacher</h2></div>
+           
+        
+            <div class="col-lg-4 "><a href=@Url.Action("RegisterStudent","Account")><div id="card2" style="height:400px"><div class="front"><img src="~/Content/image/kid.png" style="height:400px" class="stu" /></div><div class="back"><img src="~/Content/image/kid.png" style="height:400px" class="stu" /></div></div></a><h2 style="font-family: 'Bangers', cursive;letter-spacing: 3px;color: #2AB2C2;"><br />&nbsp;&nbsp;&nbsp;&nbsp;Student</h2></div>
+    </div>
+</div>
+</div>
+<script >
+    $("#card").flip({
+        axis: "y", // y or x
+        reverse: false, // true and false
+        trigger: "hover", // click or hover
+        speed: 1000
+    });
+    $("#card2").flip({
+        axis: "y", // y or x
+        reverse: false, // true and false
+        trigger: "hover", // click or hover
+        speed: 1000
+    });
+    $(".tea").hover(
+        function () {
+$(".texts").text("teacher")
+        }
+        )
+    $(".stu").hover(
+    function () {
+        $(".texts").text("student")
+    }
+    )
+</script>

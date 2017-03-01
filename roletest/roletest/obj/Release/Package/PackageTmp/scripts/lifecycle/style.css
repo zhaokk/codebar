@@ -1,0 +1,182 @@
+.canvas-container {
+    border-radius: 15px;
+    overflow: hidden;
+    width: 690px;
+   // background-image:url('../../Content/lifecycle/lfb.png');
+    background-size:600px 600px;
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1250px;
+    }
+}
+#canvas {
+    border-radius: 15px;
+}
+#commands.nofloat{
+    float:none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.col-lg-6 {
+padding-right:10px;
+}
+.well-sm {
+border-radius:15px;
+}
+.straight-top {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.straight-bottom {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.big-padding-well {
+    padding-top:20px;
+}
+.small-padding-button {
+padding-left:5px;
+padding-right:5px;
+}
+.rectangle-button {
+width:60px;
+height:60px;
+    border-radius: 10px;
+    padding:7px;
+    background-color:
+}
+
+.button-image {
+    width:44px;
+    height:44px;
+background-size: cover;
+}
+#egg {
+background-image:url(./image/egg.png);
+}
+#tadpole {
+    height:20px;
+background-image:url(./image/tadpole.png);
+}
+#frog {
+background-image:url(./image/frog.png);
+}
+#cycle {
+    background-image:url(./image/arrow.png);
+}
+#lilypad {
+    height:30px;
+    background-image:url(./image/lutos.png);
+}
+#texti {
+    height:38px;
+    background-image:url(./image/word.png);
+}
+#reeds {
+    background-image:url(./image/reeds.png);
+}
+#save{
+    background-image:url(./image/disk.png);
+}
+#reset{
+    height:41px;
+    background-image:url(./image/reset.png);
+}
+hr {
+    margin-top:0px;
+            border-top: 2px solid #C1BABA;
+}
+.button-title {
+text-align:center;
+margin-top:3px;
+}
+.button-image i {
+font-size:36px;
+margin:5px;
+
+}
+.alertify-notifier.ajs-top {
+    top: 0px;
+}
+/* advance controller
+*/
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container .hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 285px;
+	height: 682px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+
+	transform: rotateY(180deg);
+}
+
+    .back .btn {
+    padding:7px;
+    
+    }
+#drawing-mode-options{
+    background: #2ab2c2 !important;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    border: 0;
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+}
+.blocks {
+        color: #fff;
+    
+        border-radius: 4px;
+            position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin:5px;
+}
+    .blocks a {
+    color: #fff;
+    }
+.moveBlock {
+    background-color: #337ab7;
+}
+.rotateBlock {
+    background-color:#9C27B0;
+}
+.amplifyBlock {
+    background-color:#FF9800;
+}

@@ -1,0 +1,3 @@
+﻿
+    $("#dialog").appendTo("#codeInterface .row");
+

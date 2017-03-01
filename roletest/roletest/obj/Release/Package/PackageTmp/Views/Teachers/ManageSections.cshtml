@@ -1,0 +1,41 @@
+﻿@model IEnumerable<roletest.Models.Section>
+
+
+@{
+    ViewBag.Title = "ManagaSections";
+}
+
+<h2>ManagaSections</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateSection")
+</p>
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.SectionName)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.SectionDetail)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionDetail)
+            </td>
+            <td>
+                @Html.ActionLink("Student Management", "StudentManagement", new { id = item.Id }) 
+                @*| @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

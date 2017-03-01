@@ -1,0 +1,1009 @@
+﻿
+
+
+<link rel="stylesheet" href="~/scripts/lifecycle/master.css">
+<link rel="stylesheet" href="~/scripts/lifecycle/prism.css">
+<link href="~/scripts/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="~/scripts/lifecycle/style.css">
+<style>
+    .alertify-notifier {
+        position: absolute;
+    }
+
+    pre {
+        margin-left: 15px !important;
+    }
+
+    .fa {
+        margin-right: 10px;
+        font-size: 20px;
+        margin-bottom: -3px;
+    }
+
+    .subline {
+        width: 435px !important;
+    }
+</style>
+<!--[if lt IE 9]>
+  <script src="../lib/excanvas.js"></script>
+<![endif]-->
+
+<script async="" src="~/scripts/lifecycle/load.js"></script>
+<script type="text/javascript" async="" src="~/scripts/lifecycle/ga.js"></script>
+<script src="~/scripts/lifecycle/prism.js"></script>
+<script>
+
+</script>
+<script src="~/scripts/lifecycle/fabric.js"></script>
+<script src="~/scripts/lifecycle/master.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<link rel="stylesheet" href="~/scripts/blocklyMaze/common/common.css">
+<br>
+<table  width="100%" style="font-size:28px;margin-top:-10px; ">
+    <tbody>
+        <tr>
+            <td style="padding:15px">
+                <h1><span class="level_number level_done" id="level1">0</span> <a class="level_dot" id="level0" href="./lifecyclecode?lang=en&level=1&skin=0"></a>  <a class="level_dot" id="level2" href="./lifecyclecode?lang=en&amp;level=2&amp;skin=0"></a> <a class="level_dot level_done" id="level3" href="./lifecyclecode?lang=en&amp;level=3&amp;skin=0"></a> <a class="level_dot" id="level4" href="./lifecyclecode?lang=en&amp;level=4&amp;skin=0"></a> <a class="level_dot" id="level5" href="./lifecyclecode?lang=en&amp;level=5&amp;skin=0"></a> <a class="level_dot" id="level6" href="./lifecyclecode?lang=en&amp;level=6&amp;skin=0"></a> <a class="level_dot" id="level7" href="./lifecyclecode?lang=en&amp;level=7&amp;skin=0"></a> <a class="level_dot" id="level8" href="./lifecyclecode?lang=en&amp;level=8&amp;skin=0"></a> <a class="level_dot" id="level9" href="./lifecyclecode?lang=en&amp;level=9&amp;skin=0"></a> <a class="level_number" id="level10" href="./lifecyclecode?lang=en&amp;level=10&amp;skin=0">10</a></h1>
+            </td>
+            <td class="farSide">
+                &nbsp;
+                <button id="pegmanButton"><img src="../scripts/blocklyMaze/common/1x1.gif" style="background-image: url(&quot;../scripts/blocklyMaze/maze/panda.png&quot;);"><span id="pegmanButtonArrow">▾</span></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div ng-app="kitchensink">
+
+
+    <br>
+    <div id="bd-wrapper" ng-controller="CanvasControls" class="ng-scope">
+
+        <!--[if IE]><script src="../lib/fonts/Delicious.font.js"></script><![endif]-->
+
+        <script src="~/scripts/lifecycle/paster.js"></script>
+        <script src="~/scripts/lifecycle/jquery.mousewheel.min.js"></script>
+
+        <link rel="stylesheet" href="~/scripts/lifecycle/kitchensink.css">
+        <link href="~/scripts/lifecycle/cssfamily=Plaster.css" rel="stylesheet" type="text/css">
+        <link href="~/scripts/lifecycle/cssfamily=Engagement.css" rel="stylesheet" type="text/css">
+        <div class="row">
+            <div class="col-lg-6">
+                <div style="position:relative;width:704px;float:left;" id="canvas-wrapper">
+                    <div id="canvas-controls">
+
+                        <canvas id="canvas" width="700" height="600"></canvas>
+                        <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
+                            <label for="opacity">Opacity: </label>
+                            <input value="100" type="range" bind-value-to="opacity">
+                            <label for="color" style="margin-left:10px">Color: </label>
+                            <input type="color" style="width:40px" bind-value-to="fill">
+                        </div>
+
+                        <div id="text-wrapper" style="margin-top: 10px" ng-show="getText()" class="">
+                            <textarea bind-value-to="text"></textarea>
+                            <div id="text-controls">
+                                <label for="font-family" style="display:inline-block">Font family:</label>
+                                <select id="font-family" class="btn-object-action" bind-value-to="fontFamily">
+                                    <option value="arial">Arial</option>
+                                    <option value="helvetica" selected="">Helvetica</option>
+                                    <option value="myriad pro">Myriad Pro</option>
+                                    <option value="delicious">Delicious</option>
+                                    <option value="verdana">Verdana</option>
+                                    <option value="georgia">Georgia</option>
+                                    <option value="courier">Courier</option>
+                                    <option value="comic sans ms">Comic Sans MS</option>
+                                    <option value="impact">Impact</option>
+                                    <option value="monaco">Monaco</option>
+                                    <option value="optima">Optima</option>
+                                    <option value="hoefler text">Hoefler Text</option>
+                                    <option value="plaster">Plaster</option>
+                                    <option value="engagement">Engagement</option>
+                                </select>
+                                <br>
+                                <label for="text-align" style="display:inline-block">Text align:</label>
+                                <select id="text-align" class="btn-object-action" bind-value-to="textAlign">
+                                    <option value="Left">Left</option>
+                                    <option value="Center">Center</option>
+                                    <option value="Right">Right</option>
+                                    <option value="Justify">Justify</option>
+                                </select>
+                                <div>
+                                    <label for="text-bg-color">Background color:</label>
+                                    <input type="color" value="" id="text-bg-color" size="10" class="btn-object-action" bind-value-to="bgColor">
+                                </div>
+                                <div>
+                                    <label for="text-lines-bg-color">Background text color:</label>
+                                    <input type="color" value="" id="text-lines-bg-color" size="10" class="btn-object-action" bind-value-to="textBgColor">
+                                </div>
+                                <div>
+                                    <label for="text-stroke-color">Stroke color:</label>
+                                    <input type="color" value="" id="text-stroke-color" class="btn-object-action" bind-value-to="strokeColor">
+                                </div>
+                                <div>
+                                    <label for="text-stroke-width">Stroke width:</label>
+                                    <input type="range" value="1" min="1" max="5" id="text-stroke-width" class="btn-object-action" bind-value-to="strokeWidth">
+                                </div>
+                                <div>
+                                    <label for="text-font-size">Font size:</label>
+                                    <input type="range" value="" min="1" max="120" step="1" id="text-font-size" class="btn-object-action" bind-value-to="fontSize">
+                                </div>
+                                <div>
+                                    <label for="text-line-height">Line height:</label>
+                                    <input type="range" value="" min="0" max="10" step="0.1" id="text-line-height" class="btn-object-action" bind-value-to="lineHeight">
+                                </div>
+                            </div>
+                            <div id="text-controls-additional">
+                                <button type="button" class="btn btn-object-action" ng-click="toggleBold()" ng-class="{&#39;btn-inverse&#39;: isBold()}">
+                                    Bold
+                                </button>
+                                <button type="button" class="btn btn-object-action" id="text-cmd-italic" ng-click="toggleItalic()" ng-class="{&#39;btn-inverse&#39;: isItalic()}">
+                                    Italic
+                                </button>
+                                <button type="button" class="btn btn-object-action" id="text-cmd-underline" ng-click="toggleUnderline()" ng-class="{&#39;btn-inverse&#39;: isUnderline()}">
+                                    Underline
+                                </button>
+                                <button type="button" class="btn btn-object-action" id="text-cmd-linethrough" ng-click="toggleLinethrough()" ng-class="{&#39;btn-inverse&#39;: isLinethrough()}">
+                                    Linethrough
+                                </button>
+                                <button type="button" class="btn btn-object-action" id="text-cmd-overline" ng-click="toggleOverline()" ng-class="{&#39;btn-inverse&#39;: isOverline()}">
+                                    Overline
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="well-sm well straight-bottom">
+                            <span> <b>Action</b></span>
+                        </div>
+                        <div class="well-sm well straight-top" id="actionBox">
+                            <div style="height:500px;" id="actionBox">
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="flip-container" id="flip-toggle">
+
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="well-sm well big-padding-well">
+
+                                        <div id="commands" class="nofloat" ng-click="maybeLoadShape($event)">
+                                            <h4>1.Choose life Cycle</h4>
+                                            <div class="row">
+                                                <div class="col-lg-3 small-padding-button">
+
+                                                    <button type="button" class="rectangle-button btn" ng-click="addImage1()">
+                                                        <div id="egg" class="button-image">
+
+                                                        </div>
+
+                                                    </button>
+                                                    <p class="button-title">EGG</p>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="addImage2()">
+                                                            <div id="tadpole" class="button-image">
+
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">TADPOLE</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="addImage3()">
+                                                            <div id="frog" class="button-image">
+
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">FROG</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <h4>2.Add Element</h4>
+                                            <div class="row">
+                                                <div class="col-lg-3 small-padding-button">
+
+                                                    <button type="button" id="arrow" class="rectangle-button btn" ng-click="addImageArrow()">
+                                                        <div id="cycle" class="button-image">
+
+                                                        </div>
+
+                                                    </button>
+                                                    <p class="button-title">CYCLE</p>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="addImageReeds()">
+                                                            <div id="reeds" class="button-image">
+
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">REEDS</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="addImageLilypad()">
+                                                            <div id="lilypad" class="button-image">
+
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">LILYPAD</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="addText()">
+                                                            <div class="button-image">
+                                                                <i class="fa fa-font" aria-hidden="true"></i>
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">TEXT</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <h4>3.Save or Reset</h4>
+                                            <div class="row">
+                                                @if (User.IsInRole("Student"))
+                                                {
+                                                    <div class="col-lg-3 small-padding-button">
+
+                                                        <button type="button" class="rectangle-button btn" ng-click="addImage1()">
+                                                            <div class="button-image">
+                                                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">SAVE</p>
+                                                    </div>
+
+                                                }
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="getimage()">
+                                                            <div id="export" class="button-image">
+                                                                <i class="fa fa-file-image-o"></i>
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">EXPORT</p>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="confirmClear()">
+                                                            <div class="button-image">
+                                                                <i class="fa fa-eraser" aria-hidden="true"></i>
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">RESET</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 small-padding-button">
+                                                    <div>
+                                                        <button type="button" class="rectangle-button btn" ng-click="removeSelected()">
+                                                            <div class="button-image">
+                                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                            </div>
+
+                                                        </button>
+                                                        <p class="button-title">REMOVE SELECTED</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <hr />
+                                            <h4>4.Life Cycle Name</h4>
+
+                                            <div id="lifeCycle" class="form-group">
+                                                <input id="title" class="form-control" placeholder="type in lifecycle name" type="text">
+                                            </div>
+
+
+                                            <!--
+                                                                    <div class="tab-pane active" id="simple-shapes">
+
+                                                                        <div id="lifeCycle" class="form-group">
+                                                                            <input id="title" class="form-control" placeholder="type in lifecycle name" type="text">
+                                                                        </div>
+                                                                        <p>Adding <strong>life cycle arrow</strong> to canvas:</p>
+                                                                        <p>
+                                                                            <button id="arrow" type="button" class="btn image1" ng-click="addImageArrow()"><i class="fa fa-arrow-left" style="color: #8BC34A;"></i>green Arrow </button>
+                                                                            <button type="button" class="btn image1" ng-click="addImageRedArrow()"><i class="fa fa-arrow-left" style="color: #F44336;"></i>Red Arrow</button>
+                                                                        </p>
+                                                                        <p>Using <strong>life cycle template</strong> to canvas:</p>
+                                                                        <p>
+                                                                            <button class="btn" ng-click="addText()"><i class="fa fa-align-left"></i>Add text</button>
+
+
+                                                                            <button class="btn" onclick="$('#load').click()"><i class="fa fa-file-image-o"></i>upload image</button>
+                                                                            <input id="load" style="display:none; visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
+
+                                                                        </p>
+                                                                        <p>
+
+                                                                            <button type="button" class="btn rect" ng-click="addLifeCycle(3)">LifeCircle3</button>
+                                                                            <button type="button" class="btn rect" ng-click="addLifeCycle(4)">LifeCircle4</button>
+
+                                                                        </p>  <p>
+                                                                            <button type="button" class="btn rect" ng-click="addLifeCycle(5)">LifeCircle5</button>
+                                                                            <button type="button" class="btn rect" ng-click="addLifeCycle(6)">LifeCircle6</button>
+
+                                                                        </p>
+                                                                        <p>
+
+                                                                        </p>
+                                                                        <p>Add <strong>Sample images</strong> to canvas:</p>
+                                                                        <p>
+                                                                            <button type="button" id="egg" class="btn image1" ng-click="addImage1()">Egg</button>
+                                                                            <button type="button" id="tadpole" class="btn image2" ng-click="addImage2()">tadpole</button>
+                                                                            <button type="button" id="frog" class="btn image3" ng-click="addImage3()">frog</button>
+                                                                        </p>
+                                                                        <p>cockroach life cycle</p>
+                                                                        <p>
+
+                                                                            <button type="button" class="btn image1" ng-click="addCR1()">Egg case</button>
+                                                                            <button type="button" class="btn image2" ng-click="addCR2()">Nymph</button>
+                                                                            <button type="button" class="btn image3" ng-click="addCR3()">Adult</button>
+                                                                        </p>
+                                                                        @*<p>Add <strong>gradient-based shapes</strong> to canvas:</p>
+                                                                    <p>
+                                                                        <button class="btn shape" id="shape74">Gradient 1</button>
+                                                                        <button class="btn shape" id="shape66">Gradient 2</button>
+                                                                        <button class="btn shape" id="shape75">Gradient 3</button>
+
+                                                                    </p>
+                                                                    <p>Add <strong>arcs</strong> and misc to canvas:</p>
+                                                                    <p>
+                                                                        <button class="btn shape" id="shape104">Arc(s) 1</button>
+                                                                        <button class="btn shape" id="shape105">Arc(s) 2</button>
+                                                                        <button class="btn shape" id="shape106">Arc(s) 3</button>
+                                                                        <button class="btn shape" id="shape107">Arc(s) 4</button>
+                                                                    </p>
+                                                                    <p>
+                                                                        <button class="btn shape" id="shape103">Transformed paths</button>
+                                                                    </p>
+                                                                    <p>
+                                                                        <button class="btn shape" id="shape54">Image</button>
+                                                                    </p>*@
+
+                                                                        <script>
+                                                                        window.ondragover = function(e) {e.preventDefault()}
+                                                                        window.ondrop = function(e) {e.preventDefault(); upload(e.dataTransfer.files[0]); }
+                                                                        function upload(file) {
+
+                                                                            /* Is the file an image? */
+                                                                            if (!file || !file.type.match(/image.*/)) return;
+
+                                                                            /* It is! */
+                                                                            var reader = new FileReader();
+                                                                            reader.onloadend=function(){
+
+                                                                                alert(reader.result);
+                                                                                addImageForDrop(reader.result);
+
+                                                                            }
+                                                                            reader.readAsDataURL(file);
+                                                                        }
+                                                                        </script>
+                                                                        <style>
+                                                                            #dropzone {
+                                                                                //border: 10px solid black;
+                                                                                line-height: 100px;
+                                                                                width: 200px;
+                                                                                font-size: 40px;
+                                                                            }
+
+                                                                            em {
+                                                                                position: absolute;
+                                                                                bottom: 0;
+                                                                                right: 0;
+                                                                            }
+                                                                        </style>
+                                                                    </div>
+                                                                    <div class="tab-pane" id="object-controls-pane">
+                                                                        <div id="global-controls">
+                                                                            <p>
+
+
+                                                                                @if (User.IsInRole("Student"))
+                                                                            {
+                                                                                    <button class="btn btn-success" id="rasterize" ng-click="rasterize()">
+                                                                                        Save lifecycle to gallery
+                                                                                    </button>
+                                                                            }
+                                                                            else {
+                                                                                    <button class="btn btn-success" id="rasterize" onclick="getimage()">
+                                                                                        <i class="fa fa-download"></i>export   Image
+                                                                                    </button>
+
+                                                                            }
+
+                                                                                <button class="btn btn-success" id="rasterize-svg" ng-click="rasterizeSVG()">
+                                                                                    SVG
+                                                                                </button>
+                                                                                <button class="btn btn-success" id="rasterize-json" ng-click="rasterizeJSON()">
+                                                                                    JSON
+                                                                                </button>
+                                                                            </p>
+                                                                            <p>
+                                                                                <button id="clear" class="btn btn-danger clear" ng-click="confirmClear()">Clear canvas</button>
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="object-controls" object-buttons-enabled="getSelected()">
+                                                                            <div style="margin-top:10px;">
+                                                                                <p>
+                                                                                    <button class="btn btn-object-action" id="remove-selected" ng-click="removeSelected()">
+                                                                                        Remove selected object/group
+                                                                                    </button>
+                                                                                </p>
+                                                                                <button class="btn btn-lock btn-object-action ng-binding" ng-click="setHorizontalLock(!getHorizontalLock())" ng-class="{&#39;btn-inverse&#39;: getHorizontalLock()}">
+                                                                                    Lock horizontal movement
+                                                                                </button>
+                                                                                <br>
+                                                                                <button class="btn btn-lock btn-object-action ng-binding" ng-click="setVerticalLock(!getVerticalLock())" ng-class="{&#39;btn-inverse&#39;: getVerticalLock()}">
+                                                                                    Lock vertical movement
+                                                                                </button>
+                                                                                <br>
+                                                                                <button class="btn btn-lock btn-object-action ng-binding" ng-click="setScaleLockX(!getScaleLockX())" ng-class="{&#39;btn-inverse&#39;: getScaleLockX()}">
+                                                                                    Lock horizontal scaling
+                                                                                </button>
+                                                                                <br>
+                                                                                <button class="btn btn-lock btn-object-action ng-binding" ng-click="setScaleLockY(!getScaleLockY())" ng-class="{&#39;btn-inverse&#39;: getScaleLockY()}">
+                                                                                    Lock vertical scaling
+                                                                                </button>
+                                                                                <br>
+                                                                                <button class="btn btn-lock btn-object-action ng-binding" ng-click="setRotationLock(!getRotationLock())" ng-class="{&#39;btn-inverse&#39;: getRotationLock()}">
+                                                                                    Lock rotation
+                                                                                </button>
+                                                                            </div>
+                                                                            <div style="margin-top:10px">
+                                                                                <p>
+                                                                                    <span style="margin-right: 10px">Origin X: </span>
+                                                                                    <label>
+                                                                                        Left
+                                                                                        <input type="radio" name="origin-x" class="origin-x btn-object-action" value="left" bind-value-to="originX">
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        Center
+                                                                                        <input type="radio" name="origin-x" class="origin-x btn-object-action" value="center" bind-value-to="originX">
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        Right
+                                                                                        <input type="radio" name="origin-x" class="origin-x btn-object-action" value="right" bind-value-to="originX">
+                                                                                    </label>
+                                                                                </p>
+                                                                                <p>
+                                                                                    <span style="margin-right: 10px">Origin Y: </span>
+                                                                                    <label>
+                                                                                        Top
+                                                                                        <input type="radio" name="origin-y" class="origin-y btn-object-action" value="top" bind-value-to="originY">
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        Center
+                                                                                        <input type="radio" name="origin-y" class="origin-y btn-object-action" value="center" bind-value-to="originY">
+                                                                                    </label>
+                                                                                    <label>
+                                                                                        Bottom
+                                                                                        <input type="radio" name="origin-y" class="origin-y btn-object-action" value="bottom" bind-value-to="originY">
+                                                                                    </label>
+                                                                                </p>
+                                                                            </div>
+                                                                            <div style="margin-top:10px;">
+                                                                                <button id="send-backwards" class="btn btn-object-action" ng-click="sendBackwards()">Send backwards</button>
+                                                                                <button id="send-to-back" class="btn btn-object-action" ng-click="sendToBack()">Send to back</button>
+                                                                            </div>
+                                                                            <div style="margin-top:4px;">
+                                                                                <button id="bring-forward" class="btn btn-object-action" ng-click="bringForward()">Bring forwards</button>
+                                                                                <button id="bring-to-front" class="btn btn-object-action" ng-click="bringToFront()">Bring to front</button>
+                                                                            </div>
+                                                                            <div style="margin-top:10px;">
+                                                                                <button id="gradientify" class="btn btn-object-action" ng-click="gradientify()">
+                                                                                    Gradientify
+                                                                                </button>
+                                                                                <button id="shadowify" class="btn btn-object-action" ng-click="shadowify()">
+                                                                                    Shadowify
+                                                                                </button>
+                                                                                <button id="patternify" class="btn btn-object-action" ng-click="patternify()">
+                                                                                    Patternify
+                                                                                </button>
+                                                                                <button id="clip" class="btn btn-object-action" ng-click="clip()">
+                                                                                    Clip
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div style="margin-top:10px;" id="drawing-mode-wrapper">
+                                                                            <button id="drawing-mode" class="btn btn-info ng-binding" ng-click="setFreeDrawingMode(!getFreeDrawingMode())" ng-class="{&#39;btn-inverse&#39;: getFreeDrawingMode()}">
+                                                                                Enter free drawing mode
+                                                                            </button>
+                                                                            <div id="drawing-mode-options" ng-show="getFreeDrawingMode()" class="ng-hide">
+                                                                                <label for="drawing-mode-selector">Mode:</label>
+                                                                                <select id="drawing-mode-selector" bind-value-to="drawingMode">
+                                                                                    <option value="Pencil">Pencil</option>
+                                                                                    <option value="Circle">Circle</option>
+                                                                                    <option value="Spray">Spray</option>
+                                                                                    <option value="Pattern">Pattern</option>
+                                                                                    <option value="hline">hline</option>
+                                                                                    <option value="vline">vline</option>
+                                                                                    <option value="square">square</option>
+                                                                                    <option value="diamond">diamond</option>
+                                                                                    <option value="texture">texture</option>
+                                                                                </select>
+                                                                                <br>
+                                                                                <label for="drawing-line-width">Line width:</label>
+                                                                                <input type="range" value="30" min="0" max="150" bind-value-to="drawingLineWidth">
+                                                                                <br>
+                                                                                <label for="drawing-color">Line color:</label>
+                                                                                <input type="color" value="#005E7A" bind-value-to="drawingLineColor">
+                                                                                <br>
+                                                                                <label for="drawing-shadow-width">Line shadow width:</label>
+                                                                                <input type="range" value="0" min="0" max="50" bind-value-to="drawingLineShadowWidth">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="tab-pane" id="json-inout">
+                                                                        <textarea id="json-console" bind-value-to="consoleJSON">      </textarea>
+                                                                        <button type="button" class="btn btn-info" ng-click="loadJSON()">
+                                                                            Load
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-info" ng-click="saveJSON()">
+                                                                            Save
+                                                                        </button>
+                                                                    </div>
+
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="well-sm well big-padding-well">
+
+                                        <div id="commands" class="nofloat" ng-click="maybeLoadShape($event)">
+                                            <h4>Advance Controls</h4>
+                                            <div style="margin-top:4px;">
+
+                                                <button class="btn btn-object-action" id="remove-selected" ng-click="swim()">
+                                                    add swim animation
+                                                </button>
+                                            </div>
+                                            <div style="margin-top:4px;">
+                                                <button class="btn btn-object-action"  onclick="addMove('move')">
+                                                    move forward
+                                                </button>
+                                            </div>
+                                            <div style="margin-top:4px;">
+                                                <button class="btn btn-object-action"  onclick="addMove('rotate')">
+                                                    rotate
+                                                </button>
+                                            </div>
+                                            <div style="margin-top:4px;">
+                                                <button class="btn btn-object-action" onclick="addMove('amplify')">
+                                                    amplify
+                                                </button>
+                                            </div>
+                                                <div style="margin-top:4px;">
+
+                                                    <button class="btn btn-object-action" id="remove-selected" ng-click="removeSelected()">
+                                                        Remove selected object/group
+                                                    </button>
+
+
+                                                </div>
+
+                                                <div style="margin-top:4px;">
+                                                    <button id="send-backwards" class="btn btn-object-action" ng-click="sendBackwards()">Send backwards</button>
+                                                    <button id="send-to-back" class="btn btn-object-action" ng-click="sendToBack()">Send to back</button>
+                                                </div>
+                                                <div style="margin-top:4px;">
+                                                    <button id="bring-forward" class="btn btn-object-action" ng-click="bringForward()">Bring forwards</button>
+                                                    <button id="bring-to-front" class="btn btn-object-action" ng-click="bringToFront()">Bring to front</button>
+                                                </div>
+                                                <div style="margin-top:4px;">
+
+                                                    <button id="gradientify" class="btn btn-object-action" ng-click="gradientify()">
+                                                        Gradientify
+                                                    </button>
+                                                    <button id="shadowify" class="btn btn-object-action" ng-click="shadowify()">
+                                                        Shadowify
+                                                    </button>
+                                                </div>
+                                                <div style="margin-top:4px;">
+                                                    <button id="patternify" class="btn btn-object-action" ng-click="patternify()">
+                                                        Patternify
+                                                    </button>
+                                                    <button id="clip" class="btn btn-object-action" ng-click="clip()">
+                                                        Clip
+                                                    </button>
+                                                </div>
+
+                                                <div style="margin-top:4px;" id="drawing-mode-wrapper">
+                                                    <button id="drawing-mode" class="btn btn-info ng-binding" ng-click="setFreeDrawingMode(!getFreeDrawingMode())" ng-class="{&#39;btn-inverse&#39;: getFreeDrawingMode()}">
+                                                        Enter free drawing mode
+                                                    </button>
+                                                    <div id="drawing-mode-options" ng-show="getFreeDrawingMode()" class="ng-hide">
+                                                        <label for="drawing-mode-selector">Mode:</label>
+                                                        <select id="drawing-mode-selector" bind-value-to="drawingMode">
+                                                            <option value="Pencil">Pencil</option>
+                                                            <option value="Circle">Circle</option>
+                                                            <option value="Spray">Spray</option>
+                                                            <option value="Pattern">Pattern</option>
+                                                            <option value="hline">hline</option>
+                                                            <option value="vline">vline</option>
+                                                            <option value="square">square</option>
+                                                            <option value="diamond">diamond</option>
+                                                            <option value="texture">texture</option>
+                                                        </select>
+                                                        <br>
+                                                        <label for="drawing-line-width">Line width:</label>
+                                                        <input type="range" value="30" min="0" max="150" bind-value-to="drawingLineWidth">
+                                                        <br>
+                                                        <label for="drawing-color">Line color:</label>
+                                                        <input type="color" value="#005E7A" bind-value-to="drawingLineColor">
+                                                        <br>
+                                                        <label for="drawing-shadow-width">Line shadow width:</label>
+                                                        <input type="range" value="0" min="0" max="50" bind-value-to="drawingLineShadowWidth">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <button onclick="document.querySelector('#flip-toggle').classList.toggle('hover');" class="sexyButton">Advance Actions</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- <script src="../../lib/centering_guidelines.js"></script>
+        <script src="../../lib/aligning_guidelines.js"></script> -->
+        <script src="~/scripts/lifecycle/font_definitions.js"></script>
+        <script>
+            var kitchensink = { };
+            var canvas = new fabric.Canvas('canvas');
+            canvas.setHeight(600);
+            canvas.setWidth(600);
+            canvas.setBackgroundImage('../Content/lifecycle/lfb.png', canvas.renderAll.bind(canvas), {
+                // Needed to position backgroundImage at 0/0
+                originX: 'left',
+                originY: 'top'
+            });
+        </script>
+        <script src="~/scripts/lifecycle/utils.js"></script>
+        <script src="~/scripts/lifecycle/app_config.js"></script>
+        <script src="~/scripts/lifecycle/controller.js"></script>
+        <script>
+
+            (function() {
+
+                if (document.location.hash !== '#zoom') return;
+
+                function renderVieportBorders() {
+                    var ctx = canvas.getContext();
+
+                    ctx.save();
+
+                    ctx.fillStyle = 'rgba(0,0,0,0.1)';
+
+                    ctx.fillRect(
+                      canvas.viewportTransform[4],
+                      canvas.viewportTransform[5],
+                      canvas.getWidth() * canvas.getZoom(),
+                      canvas.getHeight() * canvas.getZoom());
+
+                    ctx.setLineDash([5, 5]);
+
+                    ctx.strokeRect(
+                      canvas.viewportTransform[4],
+                      canvas.viewportTransform[5],
+                      canvas.getWidth() * canvas.getZoom(),
+                      canvas.getHeight() * canvas.getZoom());
+
+                    ctx.restore();
+                }
+
+                $(canvas.getElement().parentNode).on('mousewheel', function(e) {
+
+                    var newZoom = canvas.getZoom() + e.deltaY / 300;
+                    canvas.zoomToPoint({ x: e.offsetX, y: e.offsetY }, newZoom);
+
+                    renderVieportBorders();
+
+                    return false;
+                });
+
+                var viewportLeft = 0,
+                    viewportTop = 0,
+                    mouseLeft,
+                    mouseTop,
+                    _drawSelection = canvas._drawSelection,
+                    isDown = false;
+
+                canvas.on('mouse:down', function(options) {
+                    isDown = true;
+
+                    viewportLeft = canvas.viewportTransform[4];
+                    viewportTop = canvas.viewportTransform[5];
+
+                    mouseLeft = options.e.x;
+                    mouseTop = options.e.y;
+
+                    if (options.e.altKey) {
+                        _drawSelection = canvas._drawSelection;
+                        canvas._drawSelection = function(){ };
+                    }
+
+                    renderVieportBorders();
+                });
+
+                canvas.on('mouse:move', function(options) {
+                    if (options.e.altKey && isDown) {
+                        var currentMouseLeft = options.e.x;
+                        var currentMouseTop = options.e.y;
+
+                        var deltaLeft = currentMouseLeft - mouseLeft,
+                            deltaTop = currentMouseTop - mouseTop;
+
+                        canvas.viewportTransform[4] = viewportLeft + deltaLeft;
+                        canvas.viewportTransform[5] = viewportTop + deltaTop;
+
+                        canvas.renderAll();
+                        renderVieportBorders();
+                    }
+                });
+
+                canvas.on('mouse:up', function() {
+                    canvas._drawSelection = _drawSelection;
+                    isDown = false;
+                });
+            })();
+
+        </script>
+    </div>
+    <script>
+        (function(){
+            var mainScriptEl = document.getElementById('main');
+            if (!mainScriptEl) return;
+            var preEl = document.createElement('pre');
+            var codeEl = document.createElement('code');
+            codeEl.innerHTML = mainScriptEl.innerHTML;
+            codeEl.className = 'language-javascript';
+            preEl.appendChild(codeEl);
+            document.getElementById('bd-wrapper').appendChild(preEl);
+        })();
+    </script>
+    <script>
+        (function() {
+            fabric.util.addListener(fabric.window, 'load', function() {
+                var canvas = this.__canvas || this.canvas,
+                    canvases = this.__canvases || this.canvases;
+
+                canvas && canvas.calcOffset && canvas.calcOffset();
+
+                if (canvases && canvases.length) {
+                    for (var i = 0, len = canvases.length; i < len; i++) {
+                        canvases[i].calcOffset();
+                    }
+                }
+            });
+        })();
+    </script>
+
+
+    <iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"></iframe>
+</div>
+
+@if (User.IsInRole("Student"))
+{
+    <script>
+        var isStudent=true;
+    </script>
+}
+else {
+    <script>
+
+        var isStudent=false;
+
+        var loginWarning=alertify.message("You have not login in as a student,The life cycle won't be able to be saved")
+    </script>
+}
+<script>
+    var userAuthorized = @User.Identity.IsAuthenticated.ToString().ToLower();
+    flag = true;
+    var arrow = false;
+    var step2dis = false;
+    var i = 0
+    setTimeout(function () {
+        var tutorialTab = alertify.warning("Click to start a tutorial, ignore to build your own lifeCycle");
+        setTimeout(function () { tutorialTab.dismiss(); }, 40000);
+        tutorialTab.callback = function (isClicked) {
+            if (isClicked)
+                watchVideo();
+            else
+                console.log('notification auto-dismissed');
+        };
+    }, 1000);
+    var step2=null;
+    $("#arrow").click(function () {
+        if (arrow) {
+            alertify.dismissAll();
+            // arrow = false;
+            step2dis = true;
+            step2.dismiss();
+            arrow = false;
+            switch (i) {
+                case 2: step3Noti(); break;
+                case 4: step4Noti(); break;
+                case 6: step5Noti(); break;
+                default: break;
+
+            }
+        }
+
+    })
+
+
+    //step 1 change the name of the life cycle
+    function tutorial() {
+
+
+        var canDismiss = false;
+        var notification = alertify.success('STEP 1:Change the name of the lifeCycle');
+        notification.ondismiss = function () { return canDismiss; };
+        //setTimeout(function () { canDismiss = true; }, 5000);
+        $("#title").keypress(function () {
+            if (canDismiss == false && flag == true) {
+                canDismiss = true;
+
+                setTimeout(function () { notification.dismiss(); }, 200);
+                step2Noti();
+                flag = false;
+            }
+
+        })
+    }
+    function watchVideo(){
+        $("#nav").append('<iframe class="LifeCyclevideo" src="https://www.youtube.com/embed/7NhA9SHunKs" frameborder="0" allowfullscreen></iframe>').show('slow');
+        var videoNoti=alertify.notify('watch the frog lifeCycle video,click to exit', 'success', 110, function(){$(".LifeCyclevideo").hide('slow', function(){ $(".LifeCyclevideo").remove(); });
+            tutorial();
+        });
+
+    }
+
+    //step 2 add an arrow
+    function step2Noti() {
+        // arrow=true
+        arrow = true;
+        i=i+2;
+        step2dis = false;
+        step2 = alertify.success('STEP '+i+' :Add one arrow to the canvas');
+        step2.ondismiss = function () { return step2dis; };
+
+
+    }
+    //step 3 add an egg
+    function step3Noti() {
+        step3flag = true;
+        if (i < 3) {
+            flag = true;
+            var step3dis = false;
+            var step3 = alertify.success('STEP 3:Add an egg to the life cycle');
+            step3.ondismiss = function () { return step3dis; };
+            $("#egg").click(function () {
+                if (i < 3 && step3flag == true) {
+                    fla = false;
+                    step3dis = true;
+                    setTimeout(function () { step3.dismiss(); }, 200);
+                    step3flag == false;
+                    step2Noti();
+
+                }
+
+            })
+        }
+    }
+    //step 4 add an tadpole
+    function step4Noti() {
+        if (i < 5) {
+            var step4dis = false;
+            var step4 = alertify.success('STEP 5:Add an tadpole to the life cycle');
+            step4.ondismiss = function () { return step4dis; };
+            $("#tadpole").click(function () {
+                if (i < 5) {
+                    step4dis = true;
+                    setTimeout(function () { step4.dismiss(); }, 200);
+                    step2Noti();
+                }
+            })
+
+        }
+    }
+    //step 5 add an frog
+    function step5Noti() {
+        if (i < 7) {
+            var step5dis = false;
+            var step5 = alertify.success('STEP7:Add an frog to the life cycle');
+            step5.ondismiss = function () { return step5dis; };
+            $("#frog").click(function () {
+                if (i < 7) {
+                    step5dis = true;
+                    setTimeout(function () { step5.dismiss(); }, 200);
+                    alertify.confirm("Congratulation you have finished the tutorial,Do you want to start build you own life cycle?", function () { $("#clear").trigger("click");; }, function () { step6Noti();  })
+                    // step6Noti();
+                }
+            })
+        }
+
+    }
+
+    //step 10 save image
+    function step6Noti() {
+
+        var step6dis=false;
+        if(!isStudent){
+            var step6 = alertify.success('you can export the image by clicking the "export image" button');
+        }else{
+            var step6 = alertify.success('you can save this lifecycle in your gallary');
+        }
+
+
+        setTimeout(function () { step6.dismiss(); }, 20000);
+
+        //$("#rasterize").click(function () {
+        //    alertify.alert("Congratulation you have finished the tutorial ", function () { })
+        //    step6dis = true;
+        //    setTimeout(function () { step6.dismiss(); }, 200);
+
+        //})
+
+
+    }
+    function addMove(movement){
+        var moveelement=" <div class='moveBlock blocks'><a href='#'>move <span class='badge'>200</span></a></div>";
+        var rotate="<div class='rotateBlock blocks'><a href='#'>rotate <span class='badge'>15</span></a></div>";
+        var amplify="<div class='amplifyBlock blocks'><a href='#'>amplify <span class='badge'>2</span></a></div>";
+        switch(movement){
+            case 'move':
+                $("#actionBox").append(moveelement);
+                break;
+            case 'rotate':
+                $("#actionBox").append(rotate);
+                break;
+            case 'amplify':
+                $("#actionBox").append(amplify);
+                break;
+        }
+    }
+
+</script>

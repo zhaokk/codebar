@@ -1,0 +1,153 @@
+﻿@model IEnumerable<roletest.Models.post>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/scripts/font-awesome/css/font-awesome.css" rel="stylesheet">
+<style>
+    .fa {
+        font-size: 100px;
+        color: #fff;
+        color: rgba(255,255,255,.4);
+        width: 83px;
+        margin: 0 auto;
+        display: block;
+        padding-top: 9px;
+    }
+
+    li a:hover {
+        text-decoration: none;
+    }
+</style>
+<div style="padding-top:70px">
+    <ul class="cards" style="
+        width 80%;
+        margin 0 auto;
+        ">
+
+        @foreach (var item in Model)
+        {
+            <li>
+
+                <a class="image_container" href="@item.url"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><i class="fa fa-@(item.icon)"></i></a>
+                <span class="content">
+                    <h2>
+                        <a href="@item.url">@item.name</a>
+                    </h2>
+                    <p> @item.description</p>
+                </span>
+                <span class="content_bottom">
+
+                    <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+                </span>
+            </li>
+        }
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/bird.html"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span><i class="fa fa-twitter"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/other/standalone-widgets/medium-editor/">Lost Bird</a>
+                </h2>
+                <p> deep-dive into conditionals. Control-flow is explored with increasingly complex conditions.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/puzzle.html"><span class="ionic ion-stats-bars"></span><i class="fa fa-puzzle-piece"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/ui/scrolling/clusterize-js-2/">Puzzle</a>
+                </h2>
+                <p>Puzzle is a quick introduction to Blockly's shapes and how the pieces snap together.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/maze.html"><span class="ionic ion-pound"></span><i class="fa fa-ils"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/ui/scrolling/smartscroll/">Programatic Maze</a>
+                </h2>
+                <p>Maze is an introduction to loops and conditionals. It starts simply, but every level is more challenging than the last.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/pond-basic.html"><span class="ionic ion-pound"></span><i class="fa fa-life-ring"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/ui/scrolling/smartscroll/">Battle Ship</a>
+                </h2>
+                <p>open-ended contest to program the smartest duck. The blocks now contain real JavaScript code written on them.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/turtle.html"><span class="ionic ion-load-c"></span><i class="fa fa-bug"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/media/images/lazy-load-xt-2/">Fussy Turtle</a>
+                </h2>
+                <p>deep-dive into loops. Use nested loops to paint a picture. Then publish your art to Reddit for the world to see.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+        <li>
+
+            <a class="image_container" href="../scripts/blockly/movie.html"><span class="ionic ion-android-image"></span><i class="fa fa-child"></i></a>
+            <span class="content">
+                <h2>
+                    <a href="http://codebar.com/other/animation-effects/favico-js/">Coding Geometry</a>
+                </h2>
+                <p>introduction to mathematical equations. Use math to animate a movie. Then publish your movie to Reddit for the world to see.</p>
+            </span>
+            <span class="content_bottom">
+
+                <a class="show_login_popup" href="http://codebar.com/collections"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>
+
+
+
+            </span>
+        </li>
+
+    </ul>
+    </div>
+</div>

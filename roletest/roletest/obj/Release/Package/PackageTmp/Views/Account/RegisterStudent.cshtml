@@ -1,0 +1,87 @@
+﻿@model IdentitySample.Models.RegisterViewModelOfStudent
+@{
+    ViewBag.Title = "RegisterStudent";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("RegisterStudent", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>  
+      <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Gender, new { @class = "form-control" }) male 
+            &nbsp;&nbsp;&nbsp;<input id="Gender2" type="checkbox">female
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.age, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.age, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.schoolName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.schoolName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+ 
+
+}
+<script>
+    var i = 1;
+    $( document ).ready(function() {
+        $("#Gender").prop('checked', true);
+});
+    $("#Gender").click(function () {
+        if ($("#Gender").prop('checked') == false) {
+            $("#Gender2").prop('checked', true);
+
+        }
+        if ($("#Gender").prop('checked') == true) {
+            $("#Gender2").prop('checked', false);
+
+        }
+    });
+     $("#Gender2").click(function () {
+        if ($("#Gender2").prop('checked') == false) {
+            $("#Gender").prop('checked', true);
+
+        }
+        if ($("#Gender2").prop('checked') == true) {
+            $("#Gender").prop('checked', false);
+
+        }
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
